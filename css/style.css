@@ -1,0 +1,154 @@
+/*Import Deciso Fonts*/
+
+@font-face {
+    font-family: "Deciso";
+    src: url(fonts/Deciso/Deciso-Regular.otf) format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Deciso";
+    src: url(fonts/Deciso/Deciso-RegularItalic.otf) format("opentype");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Deciso";
+    src: url(fonts/Deciso/Deciso-Bold.otf) format("opentype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Deciso";
+    src: url(fonts/Deciso/Deciso-BoldItalic.otf) format("opentype");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Deciso";
+    src: url(fonts/Deciso/Deciso-ExtraBoldItalic.otf) format("opentype");
+    font-weight: 900;
+    font-style: italic;
+}
+
+/*Import Milimetre Fonts*/
+
+@font-face {
+    font-family: "Milimetre";
+    src: url(fonts/Milimetre/Millimetre-Regular.otf) format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Milimetre";
+    src: url(fonts/Milimetre/Millimetre-Bold.otf) format("opentype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Milimetre";
+    src: url(fonts/Milimetre/Millimetre-Light.otf) format("opentype");
+    font-weight: 300;
+}
+
+html {
+    min-height: 100%;
+    min-width: 100%;
+    background-image: url(../images/background.png);
+    background-size: cover;
+}
+
+body {
+    background: none;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.navbar {
+    font-family: Deciso;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.leaderboard {
+    font-family: Milimetre;
+    color: white;
+}
+
+.leaderboard h1 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 5vw;
+}
+
+.icon {
+    max-height: 2.5em;
+}
+
+.table {
+    font-size: 1em;
+}
+
+#position {
+    width: 10%;
+}
+
+#icon {
+    width: 10%;
+}
+
+#name {
+    width: 40%;
+}
+
+#lp {
+    width: 20%;
+}
+
+#winrate {
+    width: 10%;
+}
+
+#winloss {
+    width: 10%;
+}
+
+#heroContent {
+    color: white;
+    font-family: Milimetre;
+    padding: 10vh 0 10vh 0;
+}
+
+#heroLogoText {
+    font-family: Deciso;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 5rem;
+}
+
+#heroBodyText {
+    font-family: Milimetre;
+    font-weight: 300;
+}
+
+.comingSoon {
+    font-family: Deciso;
+    font-weight: 900;
+    font-style: italic;
+    color: white;
+    font-size: 5rem;
+    text-align: center;
+    margin-top: 5rem;
+}
