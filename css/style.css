@@ -60,7 +60,7 @@
 html {
     min-height: 100%;
     min-width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.7)), url(../images/background.png);
+    background-image: radial-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.4)), url(../images/background.png);
     background-size: cover;
 }
 
