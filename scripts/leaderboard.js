@@ -9,16 +9,18 @@ fetch("./json/leaderboard.json")
             var wins = data[player]["wins"];
             var losses = data[player]["losses"];
             var playerIDs = Object.keys(data);
-            var row = `<tr onclick="goToPlayer(${playerIDs[i]})">
-                        <td>${i+1}</td>
-                        <td><img src="https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon${data[player]["summonerIconId"]}.png" class="icon"></td>
-                        <td>${data[player]["name"]}</td>
-                        <td>${data[player]["lp"]}</td>
-                        <td>${((wins/(wins+losses))*100).toFixed(1)}%</td>
-                        <td>${wins}/${losses}</td>
-                    </tr>`
-            table.innerHTML += row;
-            i+=1
+            if (data[player]["wins"] + data[player]["losses"] > 0) {            
+              var row = `<tr onclick="goToPlayer(${playerIDs[i]})">
+                          <td>${i+1}</td>
+                          <td><img src="https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon${data[player]["summonerIconId"]}.png" class="icon"></td>
+                          <td>${data[player]["name"]}</td>
+                          <td>${data[player]["lp"]}</td>
+                          <td>${((wins/(wins+losses))*100).toFixed(1)}%</td>
+                          <td>${wins}/${losses}</td>
+                      </tr>`
+              table.innerHTML += row;
+              i += 1
+            } 
         }
     });
 
