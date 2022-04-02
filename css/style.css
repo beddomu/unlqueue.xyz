@@ -141,7 +141,7 @@ body {
   }
 
 #position {
-    width: 10%;
+    width: 5%;
 }
 
 #icon {
@@ -149,11 +149,11 @@ body {
 }
 
 #name {
-    width: 40%;
+    width: 20%;
 }
 
 #lp {
-    width: 20%;
+    width: 10%;
 }
 
 #winrate {
