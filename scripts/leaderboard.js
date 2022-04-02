@@ -1,4 +1,4 @@
-fetch("https://raw.githubusercontent.com/beddomu/unlqueue.xyz/main/json/leaderboard.json")
+fetch("./json/leaderboard.json")
     .then(function(resp) {
         return resp.json();
     })
