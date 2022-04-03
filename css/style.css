@@ -140,6 +140,33 @@ body {
     cursor: pointer;
   }
 
+.test {
+  color: white;
+}
+
+.col-sm-3.test{
+  background-color: white;
+}
+.col-sm-9.test{
+  background-color: white;
+}
+
+.player_profile ul{
+  list-style: none;
+}
+
+.player_stats li{
+  font-size: 15px;
+}
+
+.player_stats h5{
+    padding-left: 30px;
+}
+
+
+
+
+
 #position {
     width: 5%;
 }
