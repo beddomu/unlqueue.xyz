@@ -1,109 +1,114 @@
 fetch("./games/games.json")
-  .then(function (resp) {
-    return resp.json();
-  })
-  .then(function (data) {
-    var accordion = document.getElementById("accordion")
-    var content = ""
-    i = 0
-    for (var game in data) {
-      fetch(`./games/${data[game]['game_id']}.json`)
-        .then(function (resp) {
-          return resp.json();
-        })
-        .then(function (game) {
-          if (game['teams'][0]['win'] == true) {
-            var blue_win = "VICTORY"
-            var red_win = "DEFEAT"
-          }
-          else if (game['teams'][1]['win'] == true) {
-            var blue_win = "DEFEAT"
-            var red_win = "VICTORY"
-          }
+   .then(function (resp) {
+      return resp.json();
+   })
+   .then(function (data) {
+      var accordion = document.getElementById("accordion")
+      var content = ""
+      i = 0
+      n = -1
+      for (var game in data) {
+         if (n < 30) {
 
-          var timestamp = game['gameEndTimestamp'];
-          var date = new Date(timestamp);
+         
+            n += 1
+            links = Object.keys(data)
+            fetch(`./games/${links[n]}`)
+               .then(function (resp) {
+                  return resp.json()
+               })
+               .then(function (game) {
+                  if (game['teams'][0]['win'] == true) {
+                     var blue_win = "VICTORY"
+                     var red_win = "DEFEAT"
+                  }
+                  else if (game['teams'][1]['win'] == true) {
+                     var blue_win = "DEFEAT"
+                     var red_win = "VICTORY"
+                  }
 
-          var year = date.getFullYear();
-          var month = date.getMonth() + 1;
-          var day = date.getDate();
-          var hours = date.getHours();
-          var minutes = date.getMinutes();
-          var seconds = date.getSeconds();
+                  var timestamp = game['gameEndTimestamp'];
+                  var date = new Date(timestamp);
 
-          var summoners = {
-            21: "SummonerBarrier",
-            4: "SummonerFlash",
-            12: "SummonerTeleport",
-            3: "SummonerExhaust",
-            14: "SummonerDot",
-            6: "SummonerHaste",
-            1: "SummonerBoost",
-            7: "SummonerHeal",
-            11: "SummonerSmite",
-            32: "SummonerSnowball",
-            13: "SummonerMana"
-          }
+                  var year = date.getFullYear();
+                  var month = date.getMonth() + 1;
+                  var day = date.getDate();
+                  var hours = date.getHours();
+                  var minutes = date.getMinutes();
+                  var seconds = date.getSeconds();
 
-          for (var player in game['players']) {
-            var item0 = game['players'][player]['item0']
-            var item1 = game['players'][player]['item1']
-            var item2 = game['players'][player]['item2']
-            var item3 = game['players'][player]['item3']
-            var item4 = game['players'][player]['item4']
-            var item5 = game['players'][player]['item5']
+                  var summoners = {
+                     21: "SummonerBarrier",
+                     4: "SummonerFlash",
+                     12: "SummonerTeleport",
+                     3: "SummonerExhaust",
+                     14: "SummonerDot",
+                     6: "SummonerHaste",
+                     1: "SummonerBoost",
+                     7: "SummonerHeal",
+                     11: "SummonerSmite",
+                     32: "SummonerSnowball",
+                     13: "SummonerMana"
+                  }
 
-            var items = [item0, item1, item2, item3, item4, item5]
+                  for (var player in game['players']) {
+                     var item0 = game['players'][player]['item0']
+                     var item1 = game['players'][player]['item1']
+                     var item2 = game['players'][player]['item2']
+                     var item3 = game['players'][player]['item3']
+                     var item4 = game['players'][player]['item4']
+                     var item5 = game['players'][player]['item5']
 
-            var item_string = ""
-            for (var item in items) {
+                     var items = [item0, item1, item2, item3, item4, item5]
 
-              if (items[item] != 0) {
-                item_line = `<img src="http://ddragon.leagueoflegends.com/cdn/12.7.1/img/item/${items[item]}.png" class="icon mx-auto">`
-                item_string += item_line
-              }
-              game['players'][player]['items'] = item_string
-            }
-          }
+                     var item_string = ""
+                     for (var item in items) {
 
-          for (var player in game['players']) {
-            if (game['players'][player]['teamId'] == 100 && game['players'][player]['individualPosition'] == "TOP") {
-              var blue_top = game['players'][player]
-            }
-            else if (game['players'][player]['teamId'] == 100 && game['players'][player]['individualPosition'] == "JUNGLE") {
-              var blue_jungle = game['players'][player]
-            }
-            else if (game['players'][player]['teamId'] == 100 && game['players'][player]['individualPosition'] == "MIDDLE") {
-              var blue_mid = game['players'][player]
-            }
-            else if (game['players'][player]['teamId'] == 100 && game['players'][player]['individualPosition'] == "BOTTOM") {
-              var blue_bot = game['players'][player]
-            }
-            else if (game['players'][player]['teamId'] == 100 && game['players'][player]['individualPosition'] == "UTILITY") {
-              var blue_support = game['players'][player]
-            }
-            else if (game['players'][player]['teamId'] == 200 && game['players'][player]['individualPosition'] == "TOP") {
-              var red_top = game['players'][player]
-            }
-            else if (game['players'][player]['teamId'] == 200 && game['players'][player]['individualPosition'] == "JUNGLE") {
-              var red_jungle = game['players'][player]
-            }
-            else if (game['players'][player]['teamId'] == 200 && game['players'][player]['individualPosition'] == "MIDDLE") {
-              var red_mid = game['players'][player]
-            }
-            else if (game['players'][player]['teamId'] == 200 && game['players'][player]['individualPosition'] == "BOTTOM") {
-              var red_bot = game['players'][player]
-            }
-            else if (game['players'][player]['teamId'] == 200 && game['players'][player]['individualPosition'] == "UTILITY") {
-              var red_support = game['players'][player]
-            }
-          }
+                        if (items[item] != 0) {
+                           item_line = `<img src="http://ddragon.leagueoflegends.com/cdn/12.7.1/img/item/${items[item]}.png" class="icon mx-auto">`
+                           item_string += item_line
+                        }
+                        game['players'][player]['items'] = item_string
+                     }
+                  }
 
-          var match = `
+                  for (var player in game['players']) {
+                     if (game['players'][player]['teamId'] == 100 && game['players'][player]['individualPosition'] == "TOP") {
+                        var blue_top = game['players'][player]
+                     }
+                     else if (game['players'][player]['teamId'] == 100 && game['players'][player]['individualPosition'] == "JUNGLE") {
+                        var blue_jungle = game['players'][player]
+                     }
+                     else if (game['players'][player]['teamId'] == 100 && game['players'][player]['individualPosition'] == "MIDDLE") {
+                        var blue_mid = game['players'][player]
+                     }
+                     else if (game['players'][player]['teamId'] == 100 && game['players'][player]['individualPosition'] == "BOTTOM") {
+                        var blue_bot = game['players'][player]
+                     }
+                     else if (game['players'][player]['teamId'] == 100 && game['players'][player]['individualPosition'] == "UTILITY") {
+                        var blue_support = game['players'][player]
+                     }
+                     else if (game['players'][player]['teamId'] == 200 && game['players'][player]['individualPosition'] == "TOP") {
+                        var red_top = game['players'][player]
+                     }
+                     else if (game['players'][player]['teamId'] == 200 && game['players'][player]['individualPosition'] == "JUNGLE") {
+                        var red_jungle = game['players'][player]
+                     }
+                     else if (game['players'][player]['teamId'] == 200 && game['players'][player]['individualPosition'] == "MIDDLE") {
+                        var red_mid = game['players'][player]
+                     }
+                     else if (game['players'][player]['teamId'] == 200 && game['players'][player]['individualPosition'] == "BOTTOM") {
+                        var red_bot = game['players'][player]
+                     }
+                     else if (game['players'][player]['teamId'] == 200 && game['players'][player]['individualPosition'] == "UTILITY") {
+                        var red_support = game['players'][player]
+                     }
+                  }
+                  var match = `
         
 <div class="panel panel-primary">
 <div class="panel-heading">
-   <h3 class="panel-title text-center align-items-center p-3 my-3 text-white bg-dark rounded shadow-sm" data-target="#panel-${i}" data-toggle="collapse", style="cursor: pointer; --bs-bg-opacity: .4;">Game ID: ${game['gameId']} - ${day}/${month}/${year}</h3>
+   <h3 class="panel-title text-center align-items-center p-3 my-3 text-white bg-dark rounded shadow-sm" data-target="#panel-${i}" data-toggle="collapse", style="cursor: pointer; --bs-bg-opacity: .4;">Game ID: ${game['gameId']} - ${day}/${month}/${year} - ${hours}:${minutes}</h3>
 </div>
 <div class="panel-collapse collapse col-xs-6" id="panel-${i}">
    <div class="col-12">
@@ -336,10 +341,13 @@ fetch("./games/games.json")
    </div>
 </div>
 </div>`
-          i += 1
-          content += match
-          accordion.innerHTML = content
-          }
-        )
-    }
-  })
+                  content += match
+                  accordion.innerHTML = content
+                  i += 1
+               }
+               )
+
+         }
+      }
+
+   })
