@@ -17,7 +17,6 @@ fetch("./json/leaderboard.json")
                           <td>${data[player]["lp"]}</td>
                           <td>${((wins/(wins+losses))*100).toFixed(1)}%</td>
                           <td>${wins}/${losses}</td>
-                          <td>${data[player]["unp"]}</td>
                       </tr>`
               table.innerHTML += row;
               i += 1
